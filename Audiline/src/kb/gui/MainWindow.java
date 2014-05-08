@@ -10,7 +10,13 @@ public class MainWindow extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	/*
+	 * ######################################
+	 * Konstante
+	 * ######################################
+	 */
+	
 	/**
 	 * Größe des Fensters
 	 * wird im Konstruker verwendet
@@ -24,8 +30,19 @@ public class MainWindow extends JFrame{
 	private static final int POSX 	= 100;
 	private static final int POSY	= 20;
 	
+	
+	/*
+	 * ######################################
+	 * Klassen
+	 * ######################################
+	 */
+	
+	private MusicList 		musicList 		= new MusicList();
+	private Control			control			= new Control();
+	private PlaylistTree	playlistTree	= new PlaylistTree();
+	
 	/**
-	 * 	Kunstruktor legt die Größe des Fensters fest.
+	 * 	Kunstruktor legt die Größe des Fensters fest.<p>
 	 * 	Das Aussehen des Fensters wird an das OS
 	 * 	angepasst.
 	 * 
@@ -34,7 +51,12 @@ public class MainWindow extends JFrame{
 	 * @throws InstantiationException 
 	 * @throws ClassNotFoundException 
 	 */
-	public MainWindow() throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException{
+	public MainWindow() 
+			throws 
+				ClassNotFoundException, 
+				InstantiationException, 
+				IllegalAccessException, 
+				UnsupportedLookAndFeelException{
 		
 		//Der Prozess wird beendet wenn das Programm über das geschlossen wird
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

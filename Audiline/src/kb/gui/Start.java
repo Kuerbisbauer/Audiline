@@ -4,9 +4,8 @@ public class Start {
 
 	public static void main(String[] args) {
 		
-		System.out.println("Starting this shit!");
-		System.out.println("TEST");
-
+		//MainWindow wird geladen und angezeigt
+		MainWindow mw = new MainWindow();
+		mw.setVisible(true);
 	}
-
 }

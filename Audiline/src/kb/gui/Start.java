@@ -1,8 +1,10 @@
 package kb.gui;
 
+import javax.swing.UnsupportedLookAndFeelException;
+
 public class Start {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
 		
 		//MainWindow wird geladen und angezeigt
 		MainWindow mw = new MainWindow();

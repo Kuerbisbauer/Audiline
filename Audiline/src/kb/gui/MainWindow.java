@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -37,9 +38,9 @@ public class MainWindow extends JFrame{
 	 * ######################################
 	 */
 	
-	private Library 		musicList 		= new Library();
+	private Library 		library 		= new Library();
 	private Control			control			= new Control();
-	private PlaylistTree	playlistTree	= new PlaylistTree();
+	private PlaylistTree	playlistTree	= new PlaylistTree(library.getMusicTable(), library.getMtm());
 	
 	/**
 	 * 	Kunstruktor legt die Größe des Fensters fest.<p>
@@ -76,7 +77,10 @@ public class MainWindow extends JFrame{
 		
 		playlistTree.setPreferredSize(new Dimension(200, 0));
 		
-		this.add(musicList, BorderLayout.CENTER);
+		JScrollPane jsp = new JScrollPane();
+		jsp.setViewportView(library);
+		
+		this.add(jsp, BorderLayout.CENTER);
 		this.add(playlistTree, BorderLayout.EAST);
 		this.add(control, BorderLayout.SOUTH);
 	}

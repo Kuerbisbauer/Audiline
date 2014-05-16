@@ -7,7 +7,7 @@ import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 
-import musicPlayer.MusicFiles;
+import kb.misc.MusicFiles;
 
 public class JTreeMP3Renderer extends DefaultTreeCellRenderer
 {

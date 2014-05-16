@@ -42,13 +42,17 @@ public class Library extends JPanel{
 	
 	public Library(){
 		guildGui();
-		libraryBasics.fillLibrary(mtm, path);
+		libraryBasics.fillDatabase(path);
 	}
 
 
+	/**
+	 * Baut den JTable zusammen und befüllt diesen mit Daten
+	 */
 	private void guildGui() {
 		setLayout(new BorderLayout());
 		
+		//Das Muster der Tabelle wird definiert und die Datensätze werden hinzugefügt
 		musicTable = new JTable(mtm);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -56,7 +60,23 @@ public class Library extends JPanel{
 		
 		scrollPane.setViewportView(musicTable);
 		
-		this.add(musicTable);
 		this.add(scrollPane, BorderLayout.CENTER);
+	}
+
+
+	public JTable getMusicTable() {
+		return musicTable;
+	}
+
+	public void setMusicTable(JTable musicTable) {
+		this.musicTable = musicTable;
+	}
+
+	public MusicTableModel getMtm() {
+		return mtm;
+	}
+
+	public void setMtm(MusicTableModel mtm) {
+		this.mtm = mtm;
 	}
 }

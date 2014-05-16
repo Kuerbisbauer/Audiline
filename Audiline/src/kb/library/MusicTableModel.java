@@ -13,30 +13,25 @@ public class MusicTableModel extends AbstractTableModel
 	private List<Music> listm;
 	private MusicQueries mq = new MusicQueries();
 	
-	public MusicTableModel()
-	{
+	public MusicTableModel(){
 		this.listm = mq.getAllMusic();
 	}
 
 	@Override
-	public int getColumnCount()
-	{
+	public int getColumnCount(){
 		return 4;
 	}
 
 	@Override
-	public int getRowCount()
-	{
+	public int getRowCount(){
 		return listm.size();
 	}
 	
 	@Override
-	public String getColumnName(int col)
-	{
+	public String getColumnName(int col){
 		String name = "";
 		
-		switch(col)
-		{
+		switch(col){
 		case 0:
 			name = "Baustelle";
 			break;
@@ -55,13 +50,11 @@ public class MusicTableModel extends AbstractTableModel
 	}
 
 	@Override
-	public Object getValueAt(int row, int col)
-	{
+	public Object getValueAt(int row, int col){
 		Music m = listm.get(row);
 		Object o = null;
 		
-		switch(col)
-		{
+		switch(col){
 			case 0:
 				o = m.getId();
 				break;
@@ -87,13 +80,11 @@ public class MusicTableModel extends AbstractTableModel
 		return o;
 	}
 	
-	public boolean isCellEditable(int row, int column)
-	{
+	public boolean isCellEditable(int row, int column){
 		return false;
 	}
 	
-	public List<Music> getList()
-	{
+	public List<Music> getList(){
 		return listm;
 	}
 }

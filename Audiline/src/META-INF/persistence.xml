@@ -9,7 +9,6 @@
 			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:h2:~/Audiline"/>
 			<property name="javax.persistence.jdbc.user" value="sa"/>
-			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
 		</properties>
 	</persistence-unit>
 </persistence>

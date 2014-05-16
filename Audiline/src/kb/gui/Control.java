@@ -1,5 +1,7 @@
 package kb.gui;
 
-public class Control {
+import javax.swing.JPanel;
+
+public class Control extends JPanel{
 
 }

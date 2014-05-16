@@ -12,5 +12,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="E:/Java Libraries/jaudiotagger-2.0.3.jar"/>
+	<classpathentry kind="lib" path="E:/Java Libraries/h2/h2-1.3.171.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

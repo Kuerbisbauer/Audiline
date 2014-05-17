@@ -12,8 +12,7 @@ import kb.misc.PlaylistWatch;
 
 public class MainWindow extends JFrame{
 
-	//TODO Musicplayer
-	//TODO PlaylistWatch und JTree asynchron
+	//TODO Slider + Change color after clicking another node
 	
 	private static final long serialVersionUID = 1L;
 	

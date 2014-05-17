@@ -82,11 +82,5 @@ public class JTreeContentOptions{
 	public void refresh(){
 		for(DefaultMutableTreeNode dmtn : MusicToPlay.getMusicToPlay())
 			((MusicFiles) dmtn.getUserObject()).setPlayed(false);
-		
-		//Playlist.getJTree().repaint();
-		/*
-		MusicPlayer.setFirst(true);
-		ArrayList<MusicFiles> list = new ArrayList<MusicFiles>(getAllChildren());
-		//MusicToPlay.setMusicToPlay(list);*/
 	}
 }

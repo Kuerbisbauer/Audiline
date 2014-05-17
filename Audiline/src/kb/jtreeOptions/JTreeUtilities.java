@@ -3,6 +3,7 @@ package kb.jtreeOptions;
 import javafx.embed.swing.JFXPanel;
 
 import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 import kb.musicPlayer.MusicPlayer;
 import kb.musicPlayer.MusicToPlay;
@@ -49,7 +50,11 @@ public class JTreeUtilities {
 	}
 	
 	/**
-	 * Der nächste Musiktitel wird ausgewählt
+	 * Der nächste Musiktitel wird ausgewählt.
+	 *
+	 * (Ausbaufähig) Ist man an der Ende der Playlist angekommen, so
+	 * werden alle Titel auf unplayed gesetzt und wieder in schwarzer
+	 * Farbe angezeigt
 	 * 
 	 * @param tree - Die aktuelle Playlist
 	 * @param index - Der Index in der PlaylistWatch
@@ -58,6 +63,11 @@ public class JTreeUtilities {
 		System.out.println("NEXT");
 		jtreeNavigation.selectNext(tree, index);
 		musicPlayer.next();
+		
+		//Setzt alle Titel zurück auf unplayed und werden somit
+		//wieder in schwarzer Farbe dargestellt
+		if(index == 0)
+			jtco.refresh();
 	}
 
 	/**

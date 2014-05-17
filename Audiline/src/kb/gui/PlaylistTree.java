@@ -12,16 +12,20 @@ import javax.swing.JTree;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreePath;
 
 import kb.interfacs.MusicSelectionListener;
+import kb.interfacs.SaveMusicListener;
 import kb.jtreeOptions.JTreeMP3Renderer;
 import kb.jtreeOptions.JTreeUtilities;
 import kb.jtreeOptions.MusicTransfer;
 import kb.library.MusicTableModel;
 import kb.misc.MusicFiles;
 import kb.misc.PlaylistWatch;
+import kb.saveload.SaveLoad;
 
-public class PlaylistTree extends JPanel implements MusicSelectionListener{
+public class PlaylistTree extends JPanel implements MusicSelectionListener, SaveMusicListener{
 
 	/*
 	 * ######################################
@@ -44,6 +48,7 @@ public class PlaylistTree extends JPanel implements MusicSelectionListener{
 	 */
 	private JTreeUtilities jtreeUtilities = new JTreeUtilities();
 	private PlaylistWatch playlistWatch;
+	private SaveLoad saveLoad = new SaveLoad();
 	
 	/*
 	 * ######################################
@@ -77,6 +82,7 @@ public class PlaylistTree extends JPanel implements MusicSelectionListener{
 		 * ScrollPane den Bereich ausfüllt.
 		 */
 		tree = new JTree(root);
+		//newGroup();
 		
 		//ScrollPane, damit JTree scrollbar wird
 		JScrollPane scrollPane = new JScrollPane();
@@ -168,5 +174,17 @@ public class PlaylistTree extends JPanel implements MusicSelectionListener{
 
 	public void setPlaylistWatch(PlaylistWatch playlistWatch) {
 		this.playlistWatch = playlistWatch;
+	}
+
+
+	@Override
+	public void save() {
+		saveLoad.save(tree);
+	}
+
+
+	@Override
+	public void load() {
+		saveLoad.load(tree);
 	}
 }

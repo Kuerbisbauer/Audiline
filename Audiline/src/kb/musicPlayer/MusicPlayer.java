@@ -83,8 +83,8 @@ public class MusicPlayer {
 		player = getCurrentPlayer();
 		Status status = player.getStatus();
 		
-		if(status.equals(Status.UNKNOWN))
-			player.play();
+		//if(status.equals(Status.UNKNOWN))
+		//	player.play();
 		
 		if(status.equals(Status.READY))
 			player.play();
@@ -109,7 +109,9 @@ public class MusicPlayer {
 	 */
 	public void next() {
 		if(mediaView != null){
-			player.stop();
+			//Falls Musik abgespielt wird, wird diese beendet
+			if(getCurrentPlayer().getStatus().equals(Status.PLAYING))
+				player.stop();
 			
 			//Division verhindert, dass der Player nicht aus dem Indexbereich springt
 			MediaPlayer nextPlayer = list.get((list.indexOf(player)+1) % list.size());
@@ -124,7 +126,9 @@ public class MusicPlayer {
 	 */
 	public void back() {
 		if(mediaView != null){
-			player.stop();
+			//Falls Musik abgespielt wird, wird diese beendet
+			if(getCurrentPlayer().getStatus().equals(Status.PLAYING))
+				player.stop();
 			
 			MediaPlayer nextPlayer;
 			

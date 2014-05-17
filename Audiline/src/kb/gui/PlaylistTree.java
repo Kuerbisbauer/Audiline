@@ -146,7 +146,7 @@ public class PlaylistTree extends JPanel implements MusicSelectionListener{
 
 	@Override
 	public void lastMusic() {
-		System.out.println("BACK");
+		jtreeUtilities.selectLast(tree, playlistWatch.getSelectedIndex());
 	}
 	
 	

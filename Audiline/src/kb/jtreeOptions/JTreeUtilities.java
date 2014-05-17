@@ -46,4 +46,15 @@ public class JTreeUtilities {
 		System.out.println("NEXT");
 		jtreeNavigation.selectNext(tree, index);
 	}
+
+	/**
+	 * Der vorige Musiktitel wird ausgewählt
+	 * 
+	 * @param tree	- Die aktuelle Playlist
+	 * @param index - Der Index in der PlaylistWatch
+	 */
+	public void selectLast(JTree tree, int index) {
+		System.out.println("LAST");
+		jtreeNavigation.selectNext(tree, index);
+	}
 }

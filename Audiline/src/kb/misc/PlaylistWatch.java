@@ -80,10 +80,14 @@ public class PlaylistWatch extends JFrame implements MusicSelectionListener{
 		int selectedIndex = list.getSelectedIndex();
 		int lastIndex = list.getLastVisibleIndex();
 		
-		if(selectedIndex < lastIndex)
-			list.setSelectedIndex(selectedIndex+1);
-		else
+		if(selectedIndex == -1)
 			list.setSelectedIndex(0);
+		else{
+			if(selectedIndex < lastIndex)
+				list.setSelectedIndex(selectedIndex+1);
+			else
+				list.setSelectedIndex(0);
+		}
 	}
 
 	/**
@@ -95,16 +99,17 @@ public class PlaylistWatch extends JFrame implements MusicSelectionListener{
 		int firstIndex = list.getFirstVisibleIndex();
 		int lastIndex = list.getLastVisibleIndex();
 		
-		if(selectedIndex > firstIndex)
-			list.setSelectedIndex(selectedIndex-1);
-		else
+		if(selectedIndex == -1)
 			list.setSelectedIndex(lastIndex);
+		else{
+			if(selectedIndex > firstIndex)
+				list.setSelectedIndex(selectedIndex-1);
+			else
+				list.setSelectedIndex(lastIndex);
+		}
 	}
 
 	public int getSelectedIndex() {
-		if(list.getSelectedIndex() < 0)
-			list.setSelectedIndex(0);
-		
 		return list.getSelectedIndex();
 	}
 }

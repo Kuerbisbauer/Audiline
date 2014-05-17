@@ -91,8 +91,9 @@ public class MainWindow extends JFrame{
 		this.add(control, BorderLayout.SOUTH);
 		
 		//Observer werden hinzugefügt
-		control.addObserver(playlistTree);
+		//Reihenfolge beachten, da der Index von PlaylistWatch mit 0 beginnt -> Asynchron mit JTree 
 		control.addObserver(playlistTree.getPlaylistWatch());
+		control.addObserver(playlistTree);
 	}
 	
 	/**

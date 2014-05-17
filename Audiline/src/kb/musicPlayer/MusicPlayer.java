@@ -14,6 +14,7 @@ import kb.misc.MusicFiles;
 
 public class MusicPlayer {
 
+	
 	/*
 	 * ######################################
 	 * Attribute
@@ -95,8 +96,7 @@ public class MusicPlayer {
 		if(status.equals(Status.PAUSED) || status.equals(Status.STOPPED))
 			player.play();
 	}
-	
-	
+
 	public MediaPlayer getCurrentPlayer(){
 		if(mediaView!=null)
 			return mediaView.getMediaPlayer();

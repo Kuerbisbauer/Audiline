@@ -13,13 +13,15 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 
+import kb.interfacs.MusicSelectionListener;
 import kb.jtreeOptions.JTreeMP3Renderer;
 import kb.jtreeOptions.JTreeUtilities;
 import kb.jtreeOptions.MusicTransfer;
 import kb.library.MusicTableModel;
 import kb.misc.MusicFiles;
+import kb.misc.PlaylistWatch;
 
-public class PlaylistTree extends JPanel{
+public class PlaylistTree extends JPanel implements MusicSelectionListener{
 
 	/*
 	 * ######################################
@@ -41,6 +43,7 @@ public class PlaylistTree extends JPanel{
 	 * ######################################
 	 */
 	private JTreeUtilities jtreeUtilities = new JTreeUtilities();
+	private PlaylistWatch playlistWatch;
 	
 	/*
 	 * ######################################
@@ -62,9 +65,11 @@ public class PlaylistTree extends JPanel{
 		addJTreeBehavior(jTable, musicTableModel);
 	}
 
+
 	private void buildPlaylistTree() {
 		MainWindow.lookAndFeelOS();
-		
+		playlistWatch = new PlaylistWatch();
+		playlistWatch.setVisible(true);
 		setLayout(new BorderLayout());
 		
 		/* 
@@ -79,6 +84,8 @@ public class PlaylistTree extends JPanel{
 		
 		//JTree wird angelegt und in die scrollPane gelegt
 		scrollPane.setViewportView(tree);
+		
+		
 	}
 	
 	private void addActionlistener() {
@@ -98,8 +105,10 @@ public class PlaylistTree extends JPanel{
 	}
 	
 	protected void mouseBehavior(MouseEvent me) {
-		if(me.getButton() == 1)
-			jtreeUtilities.refreshPlaylist();
+		if(me.getButton() == 1){
+			jtreeUtilities.refreshPlaylist(tree);
+			playlistWatch.refresh();
+		}
 	}
 
 	/**
@@ -128,5 +137,24 @@ public class PlaylistTree extends JPanel{
 		
 		//Die Wurzel des JTrees wird versteckt, da diese nicht direkt gebraucht wird
 		//tree.setRootVisible(false);
+	}
+
+	@Override
+	public void nextMusic() {
+		jtreeUtilities.selectNext(tree, playlistWatch.getSelectedIndex());
+	}
+
+	@Override
+	public void lastMusic() {
+		System.out.println("BACK");
+	}
+	
+	
+	public PlaylistWatch getPlaylistWatch() {
+		return playlistWatch;
+	}
+
+	public void setPlaylistWatch(PlaylistWatch playlistWatch) {
+		this.playlistWatch = playlistWatch;
 	}
 }

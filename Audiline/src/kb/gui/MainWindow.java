@@ -8,8 +8,13 @@ import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import kb.misc.PlaylistWatch;
+
 public class MainWindow extends JFrame{
 
+	//TODO Musicplayer
+	//TODO PlaylistWatch und JTree asynchron
+	
 	private static final long serialVersionUID = 1L;
 	
 	/*
@@ -41,6 +46,7 @@ public class MainWindow extends JFrame{
 	private Library 		library 		= new Library();
 	private Control			control			= new Control();
 	private PlaylistTree	playlistTree	= new PlaylistTree(library.getMusicTable(), library.getMtm());
+	
 	
 	/**
 	 * 	Kunstruktor legt die Größe des Fensters fest.<p>
@@ -83,6 +89,10 @@ public class MainWindow extends JFrame{
 		this.add(jsp, BorderLayout.CENTER);
 		this.add(playlistTree, BorderLayout.EAST);
 		this.add(control, BorderLayout.SOUTH);
+		
+		//Observer werden hinzugefügt
+		control.addObserver(playlistTree);
+		control.addObserver(playlistTree.getPlaylistWatch());
 	}
 	
 	/**

@@ -1,16 +1,20 @@
 package kb.jtreeOptions;
 
+import javafx.embed.swing.JFXPanel;
+
 import javax.swing.JTree;
 
+import kb.musicPlayer.MusicPlayer;
 import kb.musicPlayer.MusicToPlay;
 
 public class JTreeUtilities {
 
 	private JTreeContentOptions jtco = new JTreeContentOptions();
 	private JTreeNavigation jtreeNavigation = new JTreeNavigation();
+	private MusicPlayer musicPlayer = new MusicPlayer();
 	
 	public JTreeUtilities(){
-		
+		new JFXPanel();
 	}
 
 	/**
@@ -22,6 +26,7 @@ public class JTreeUtilities {
 	public void refreshPlaylist(JTree tree) {
 		MusicToPlay.setMusicToPlay(jtco.getAllChildren(tree));
 		tree.repaint();
+		musicPlayer.initialize();
 	}
 	
 
@@ -36,6 +41,13 @@ public class JTreeUtilities {
         }  
 	}
 	
+	public void playMusic(JTree tree, int index){
+		if(index == 0)
+			jtreeNavigation.selectNext(tree, index);
+		
+		musicPlayer.play();
+	}
+	
 	/**
 	 * Der nächste Musiktitel wird ausgewählt
 	 * 
@@ -45,6 +57,7 @@ public class JTreeUtilities {
 	public void selectNext(JTree tree, int index){
 		System.out.println("NEXT");
 		jtreeNavigation.selectNext(tree, index);
+		musicPlayer.next();
 	}
 
 	/**
@@ -56,5 +69,6 @@ public class JTreeUtilities {
 	public void selectLast(JTree tree, int index) {
 		System.out.println("LAST");
 		jtreeNavigation.selectNext(tree, index);
+		musicPlayer.back();
 	}
 }

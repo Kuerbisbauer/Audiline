@@ -63,7 +63,8 @@ public class Control extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				play_pause.changeClicked();
-				
+				for(MusicSelectionListener msl : list)
+					msl.playMusic();
 			}
 		});
 		

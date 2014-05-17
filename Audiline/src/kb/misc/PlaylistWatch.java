@@ -91,7 +91,7 @@ public class PlaylistWatch extends JFrame implements MusicSelectionListener{
 	}
 
 	/**
-	 * @see kb.interfacs.MusicSelectionListener#nextMusic()
+	 * @see kb.interfacs.MusicSelectionListener#lastMusic()
 	 */
 	@Override
 	public void lastMusic() {
@@ -111,5 +111,16 @@ public class PlaylistWatch extends JFrame implements MusicSelectionListener{
 
 	public int getSelectedIndex() {
 		return list.getSelectedIndex();
+	}
+
+	/**
+	 * @see kb.interfacs.MusicSelectionListener#playMusic()
+	 */
+	@Override
+	public void playMusic() {
+		int selectedIndex = list.getSelectedIndex();
+		
+		if(selectedIndex == -1)
+			nextMusic();
 	}
 }

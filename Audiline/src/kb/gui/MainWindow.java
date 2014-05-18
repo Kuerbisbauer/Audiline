@@ -12,6 +12,8 @@ import kb.misc.PlaylistWatch;
 
 public class MainWindow extends JFrame{
 	
+	//TODO JSlider + Thread + Shuffle
+	
 	private static final long serialVersionUID = 1L;
 	
 	/*

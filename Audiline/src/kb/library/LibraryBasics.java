@@ -1,5 +1,7 @@
 package kb.library;
 
+import javax.swing.JFileChooser;
+
 import kb.misc.FileSearch;
 import kb.queries.MusicQueries;
 
@@ -20,9 +22,14 @@ public class LibraryBasics {
 	 * @param path	- Absoulter Pfadname zum ausgewählten Ordner
 	 */
 	public void fillDatabase(String path) {
-		FileSearch fileSearch = new FileSearch();
-		MusicQueries musicQueries = new MusicQueries();
-		
-		musicQueries.fillDatabase(fileSearch.getAllFiles(path));
+		if(path != null){
+			FileSearch fileSearch = new FileSearch();
+			MusicQueries musicQueries = new MusicQueries();
+			
+			musicQueries.fillDatabase(fileSearch.getAllFiles(path));
+		}else{
+			System.out.println("Kein Verzeichnis ausgewählt!");
+		}
+			
 	}
 }

@@ -16,6 +16,8 @@ import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 
+import kb.misc.FileSearch;
+
 public class SaveLoad implements Serializable{
 
 	private static final long	serialVersionUID	= 1L;
@@ -36,10 +38,14 @@ public class SaveLoad implements Serializable{
 	 */
 	private void savePlaylist(TreeModel model) {
 		try{
-			XMLEncoder xml = new XMLEncoder(new BufferedOutputStream(new FileOutputStream("c:\\pl.xml")));
-			xml.writeObject(model);
-			xml.writeObject(expanded);
-			xml.close();
+			String path = FileSearch.chooseFile("Save");
+			
+			if(path != null){
+				XMLEncoder xml = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(path)));
+				xml.writeObject(model);
+				xml.writeObject(expanded);
+				xml.close();
+			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -84,6 +90,11 @@ public class SaveLoad implements Serializable{
 		loadTreeInformation(tree);
 	}
 	
+	/**
+	 * Öffnet jeden Zweig im Baum
+	 * 
+	 * @param tree
+	 */
 	private void loadTreeInformation(JTree tree){
 		for(int i = expanded.size() - 1; i > -1; i--){
 			TreeNode[] tn = expanded.get(i);
@@ -98,10 +109,14 @@ public class SaveLoad implements Serializable{
 	 */
 	private void loadPlaylist(JTree jtree){
 		try{
-			XMLDecoder xml = new XMLDecoder(new BufferedInputStream(new FileInputStream("c:\\pl.xml")));
-			jtree.setModel((TreeModel) xml.readObject());
-			setExpanded((List<TreeNode[]>) xml.readObject());
-			xml.close();
+			String path = FileSearch.chooseFile("Save");
+			
+			if(path != null){
+				XMLDecoder xml = new XMLDecoder(new BufferedInputStream(new FileInputStream(path)));
+				jtree.setModel((TreeModel) xml.readObject());
+				setExpanded((List<TreeNode[]>) xml.readObject());
+				xml.close();
+			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}

@@ -8,6 +8,7 @@ import javax.swing.JTable;
 
 import kb.library.LibraryBasics;
 import kb.library.MusicTableModel;
+import kb.misc.FileSearch;
 
 public class Library extends JPanel{
 
@@ -42,7 +43,7 @@ public class Library extends JPanel{
 	
 	public Library(){
 		guildGui();
-		libraryBasics.fillDatabase(path);
+		libraryBasics.fillDatabase(FileSearch.chooseDirectory());
 	}
 
 

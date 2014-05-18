@@ -10,6 +10,8 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaPlayer.Status;
 import javafx.scene.media.MediaView;
+import kb.gui.Control;
+import kb.interfacs.MusicSelectionListener;
 import kb.misc.MusicFiles;
 
 public class MusicPlayer {
@@ -61,7 +63,9 @@ public class MusicPlayer {
 			playIt.setOnEndOfMedia(new Runnable() {
 				@Override
 				public void run() {
-					next();
+					//Workaround, der nächste Musikttitel wird ausgewählt
+					for(MusicSelectionListener msl : Control.getMusicSelectionListener())
+						msl.nextMusic();
 				}
 			});
 		}

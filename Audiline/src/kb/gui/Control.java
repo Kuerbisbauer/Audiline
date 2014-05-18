@@ -35,9 +35,12 @@ public class Control extends JPanel{
 	 * Listener
 	 * ######################################
 	 */
-	private List<MusicSelectionListener> 	musicSelectionListener 	= new ArrayList<MusicSelectionListener>();
-	private List<SaveMusicListener> 		saveMusicListener 		= new ArrayList<SaveMusicListener>(); 
-	private List<MusicThreadListener>		musicThreadListener		= new ArrayList<MusicThreadListener>();
+	//Static Workaround
+	private static List<MusicSelectionListener> 	musicSelectionListener 	= new ArrayList<MusicSelectionListener>();
+	
+
+	private List<SaveMusicListener> 				saveMusicListener 		= new ArrayList<SaveMusicListener>(); 
+	private List<MusicThreadListener>				musicThreadListener		= new ArrayList<MusicThreadListener>();
 	
 	public Control(){
 		buildGui();
@@ -131,5 +134,12 @@ public class Control extends JPanel{
 		});
 	}
 
-	
+	public static List<MusicSelectionListener> getMusicSelectionListener() {
+		return musicSelectionListener;
+	}
+
+	public static void setMusicSelectionListener(
+			List<MusicSelectionListener> musicSelectionListener) {
+		Control.musicSelectionListener = musicSelectionListener;
+	}
 }

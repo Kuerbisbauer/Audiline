@@ -34,12 +34,6 @@ public class Library extends JPanel{
 	private MusicTableModel mtm = new MusicTableModel();
 	private LibraryBasics libraryBasics = new LibraryBasics();
 	
-	/*
-	 * ######################################
-	 * Sonstige Attribute
-	 * ######################################
-	 */
-	
 	
 	public Library(){
 		guildGui();

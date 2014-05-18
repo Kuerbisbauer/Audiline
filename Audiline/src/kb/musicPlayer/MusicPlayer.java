@@ -21,7 +21,7 @@ public class MusicPlayer {
 	 * ######################################
 	 */
 	private MediaPlayer player;
-	private MediaView	mediaView;
+	private static MediaView	mediaView;
 	
 	private List<MediaPlayer> list 	= new ArrayList<MediaPlayer>();
 	
@@ -97,7 +97,7 @@ public class MusicPlayer {
 			player.play();
 	}
 
-	public MediaPlayer getCurrentPlayer(){
+	public static MediaPlayer getCurrentPlayer(){
 		if(mediaView!=null)
 			return mediaView.getMediaPlayer();
 		else

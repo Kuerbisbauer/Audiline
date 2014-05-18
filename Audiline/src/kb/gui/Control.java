@@ -10,9 +10,11 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import kb.interfacs.MusicSelectionListener;
+import kb.interfacs.MusicThreadListener;
 import kb.interfacs.SaveMusicListener;
 import kb.misc.PlayPauseButton;
 import kb.misc.PlaylistWatch;
+import kb.thread.MusicProgress;
 
 public class Control extends JPanel{
 	
@@ -35,26 +37,32 @@ public class Control extends JPanel{
 	 */
 	private List<MusicSelectionListener> 	musicSelectionListener 	= new ArrayList<MusicSelectionListener>();
 	private List<SaveMusicListener> 		saveMusicListener 		= new ArrayList<SaveMusicListener>(); 
-	
+	private List<MusicThreadListener>		musicThreadListener		= new ArrayList<MusicThreadListener>();
 	
 	public Control(){
 		buildGui();
 		addActionListener();
 	}
 
-	public void addMusicListObserver(PlaylistTree playlistTree) {
+	public void addMusicSelectionListener(PlaylistTree playlistTree) {
 		if(playlistTree != null)
 			musicSelectionListener.add(playlistTree);
 	}
 	
-	public void addMusicListObserver(PlaylistWatch playlistWatch) {
+	public void addMusicSelectionListener(PlaylistWatch playlistWatch) {
 		if(playlistWatch != null)
 			musicSelectionListener.add(playlistWatch);
 	}
 	
-	public void addSaveMusicListObserver(PlaylistTree playlistTree){
+	public void addSaveMusicListener(PlaylistTree playlistTree){
 		if(playlistTree != null)
 			saveMusicListener.add(playlistTree);
+	}
+	
+	public void addMusicThreadListener(MusicProgress musicProgress){
+		if(musicProgress != null){
+			musicThreadListener.add(musicProgress);
+		}
 	}
 
 	private void buildGui() {
@@ -80,6 +88,9 @@ public class Control extends JPanel{
 				play_pause.changeClicked();
 				for(MusicSelectionListener msl : musicSelectionListener)
 					msl.playMusic();
+				
+				for(MusicThreadListener mtl : musicThreadListener)
+					mtl.startSliderThread();
 			}
 		});
 		
@@ -88,6 +99,8 @@ public class Control extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				for(MusicSelectionListener msl : musicSelectionListener)
 					msl.lastMusic();
+				for(MusicThreadListener mtl : musicThreadListener)
+					mtl.startSliderThread();
 			}
 		});
 		
@@ -96,6 +109,8 @@ public class Control extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				for(MusicSelectionListener msl : musicSelectionListener)
 					msl.nextMusic();
+				for(MusicThreadListener mtl : musicThreadListener)
+					mtl.startSliderThread();
 			}
 		});	
 		

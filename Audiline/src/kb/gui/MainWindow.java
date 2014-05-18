@@ -4,15 +4,17 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import kb.misc.PlaylistWatch;
+import kb.thread.MusicProgress;
 
 public class MainWindow extends JFrame{
 	
-	//TODO JSlider (seek) + Thread
+	//TODO MusicPlayer onEndOfMedia
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -45,7 +47,15 @@ public class MainWindow extends JFrame{
 	private Library 		library 		= new Library();
 	private Control			control			= new Control();
 	private PlaylistTree	playlistTree	= new PlaylistTree(library.getMusicTable(), library.getMtm());
+	private MusicProgress	musicProgress	= new MusicProgress();
 	
+	/*
+	 * ######################################
+	 * Sonstiges
+	 * ######################################
+	 */
+	
+	private JPanel	bottomControlBar = new JPanel();
 	
 	/**
 	 * 	Kunstruktor legt die Größe des Fensters fest.<p>
@@ -85,15 +95,21 @@ public class MainWindow extends JFrame{
 		JScrollPane jsp = new JScrollPane();
 		jsp.setViewportView(library);
 		
+		//Untere Kontrollleiste wird zusammengebaut
+		bottomControlBar.setLayout(new BorderLayout());
+		bottomControlBar.add(musicProgress, BorderLayout.NORTH);
+		bottomControlBar.add(control, BorderLayout.CENTER);
+		
 		this.add(jsp, BorderLayout.CENTER);
 		this.add(playlistTree, BorderLayout.EAST);
-		this.add(control, BorderLayout.SOUTH);
+		this.add(bottomControlBar, BorderLayout.SOUTH);
 		
 		//Observer werden hinzugefügt
 		//Reihenfolge beachten, da der Index von PlaylistWatch mit 0 beginnt -> Asynchron mit JTree 
-		control.addMusicListObserver(playlistTree.getPlaylistWatch());
-		control.addMusicListObserver(playlistTree);
-		control.addSaveMusicListObserver(playlistTree);
+		control.addMusicSelectionListener(playlistTree.getPlaylistWatch());
+		control.addMusicSelectionListener(playlistTree);
+		control.addSaveMusicListener(playlistTree);
+		control.addMusicThreadListener(musicProgress);
 	}
 	
 	/**

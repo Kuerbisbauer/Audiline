@@ -49,7 +49,8 @@ public class PlaylistTree extends JPanel implements MusicSelectionListener, Save
 	private JTreeUtilities jtreeUtilities = new JTreeUtilities();
 	private PlaylistWatch playlistWatch;
 	private SaveLoad saveLoad = new SaveLoad();
-	
+
+
 	/*
 	 * ######################################
 	 * Sonstige Attribute
@@ -182,5 +183,13 @@ public class PlaylistTree extends JPanel implements MusicSelectionListener, Save
 	@Override
 	public void load() {
 		saveLoad.load(tree);
+	}
+	
+	public JTreeUtilities getJtreeUtilities() {
+		return jtreeUtilities;
+	}
+
+	public void setJtreeUtilities(JTreeUtilities jtreeUtilities) {
+		this.jtreeUtilities = jtreeUtilities;
 	}
 }

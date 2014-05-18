@@ -24,7 +24,7 @@ public class JTreeUtilities {
 		tree.repaint();
 		musicPlayer.initialize();
 	}
-	
+
 
 	/**
 	 * Alle Blätter und Zweige des Baumes werden angezeigt
@@ -80,5 +80,13 @@ public class JTreeUtilities {
 		//wieder in schwarzer Farbe dargestellt
 		if(index == 0)
 			jtco.refresh();
+	}
+	
+	public MusicPlayer getMusicPlayer() {
+		return musicPlayer;
+	}
+
+	public void setMusicPlayer(MusicPlayer musicPlayer) {
+		this.musicPlayer = musicPlayer;
 	}
 }

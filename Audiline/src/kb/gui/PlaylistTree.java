@@ -148,15 +148,11 @@ public class PlaylistTree extends JPanel implements MusicSelectionListener, Save
 	@Override
 	public void nextMusic() {
 		jtreeUtilities.selectNext(tree, playlistWatch.getSelectedIndex());
-		jtreeUtilities.playMusic(tree, playlistWatch.getSelectedIndex());
-		jtreeUtilities.playMusic(tree, playlistWatch.getSelectedIndex());
 	}
 
 	@Override
 	public void lastMusic() {
 		jtreeUtilities.selectLast(tree, playlistWatch.getSelectedIndex());
-		jtreeUtilities.playMusic(tree, playlistWatch.getSelectedIndex());
-		jtreeUtilities.playMusic(tree, playlistWatch.getSelectedIndex());
 	}
 	
 	@Override

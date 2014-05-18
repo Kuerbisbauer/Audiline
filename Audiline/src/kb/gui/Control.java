@@ -13,7 +13,6 @@ import kb.interfacs.MusicSelectionListener;
 import kb.interfacs.SaveMusicListener;
 import kb.misc.PlayPauseButton;
 import kb.misc.PlaylistWatch;
-import kb.saveload.SaveLoad;
 
 public class Control extends JPanel{
 	
@@ -27,14 +26,16 @@ public class Control extends JPanel{
 	private JButton back;
 	private JButton save;
 	private JButton load;
+
 	
 	/*
 	 * ######################################
-	 * Sonstige Attribute
+	 * Listener
 	 * ######################################
 	 */
-	private List<MusicSelectionListener> 	musicListObserver 		= new ArrayList<MusicSelectionListener>();
-	private List<SaveMusicListener> 		saveMusicListObserver 	= new  ArrayList<SaveMusicListener>(); 
+	private List<MusicSelectionListener> 	musicSelectionListener 	= new ArrayList<MusicSelectionListener>();
+	private List<SaveMusicListener> 		saveMusicListener 		= new ArrayList<SaveMusicListener>(); 
+	
 	
 	public Control(){
 		buildGui();
@@ -43,17 +44,17 @@ public class Control extends JPanel{
 
 	public void addMusicListObserver(PlaylistTree playlistTree) {
 		if(playlistTree != null)
-			musicListObserver.add(playlistTree);
+			musicSelectionListener.add(playlistTree);
 	}
 	
 	public void addMusicListObserver(PlaylistWatch playlistWatch) {
 		if(playlistWatch != null)
-			musicListObserver.add(playlistWatch);
+			musicSelectionListener.add(playlistWatch);
 	}
 	
 	public void addSaveMusicListObserver(PlaylistTree playlistTree){
 		if(playlistTree != null)
-			saveMusicListObserver.add(playlistTree);
+			saveMusicListener.add(playlistTree);
 	}
 
 	private void buildGui() {
@@ -77,7 +78,7 @@ public class Control extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				play_pause.changeClicked();
-				for(MusicSelectionListener msl : musicListObserver)
+				for(MusicSelectionListener msl : musicSelectionListener)
 					msl.playMusic();
 			}
 		});
@@ -85,7 +86,7 @@ public class Control extends JPanel{
 		back.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				for(MusicSelectionListener msl : musicListObserver)
+				for(MusicSelectionListener msl : musicSelectionListener)
 					msl.lastMusic();
 			}
 		});
@@ -93,7 +94,7 @@ public class Control extends JPanel{
 		next.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				for(MusicSelectionListener msl : musicListObserver)
+				for(MusicSelectionListener msl : musicSelectionListener)
 					msl.nextMusic();
 			}
 		});	
@@ -101,7 +102,7 @@ public class Control extends JPanel{
 		save.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				for(SaveMusicListener sml : saveMusicListObserver)
+				for(SaveMusicListener sml : saveMusicListener)
 					sml.save();
 			}
 		});
@@ -109,7 +110,7 @@ public class Control extends JPanel{
 		load.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				for(SaveMusicListener sml : saveMusicListObserver)
+				for(SaveMusicListener sml : saveMusicListener)
 					sml.load();
 			}
 		});

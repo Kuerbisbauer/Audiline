@@ -12,7 +12,7 @@ import kb.misc.PlaylistWatch;
 
 public class MainWindow extends JFrame{
 	
-	//TODO JSlider + Thread + Shuffle
+	//TODO JSlider (seek) + Thread
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -107,7 +107,6 @@ public class MainWindow extends JFrame{
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (ClassNotFoundException | InstantiationException
 				| IllegalAccessException | UnsupportedLookAndFeelException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

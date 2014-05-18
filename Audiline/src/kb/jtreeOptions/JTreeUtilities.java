@@ -13,11 +13,6 @@ public class JTreeUtilities {
 	private JTreeContentOptions jtco = new JTreeContentOptions();
 	private JTreeNavigation jtreeNavigation = new JTreeNavigation();
 	private MusicPlayer musicPlayer = new MusicPlayer();
-	
-	public JTreeUtilities(){
-		new JFXPanel();
-	}
-
 	/**
 	 * Die Playlist wird aktualisiert, abhängig davon welcher
 	 * Zweig/Blatt ausgewählt wurde.
@@ -80,5 +75,10 @@ public class JTreeUtilities {
 		System.out.println("LAST");
 		jtreeNavigation.selectNext(tree, index);
 		musicPlayer.back();
+		
+		//Setzt alle Titel zurück auf unplayed und werden somit
+		//wieder in schwarzer Farbe dargestellt
+		if(index == 0)
+			jtco.refresh();
 	}
 }

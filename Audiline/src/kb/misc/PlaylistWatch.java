@@ -8,7 +8,6 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.tree.DefaultMutableTreeNode;
 
-import kb.gui.Control;
 import kb.interfacs.MusicSelectionListener;
 import kb.musicPlayer.MusicToPlay;
 

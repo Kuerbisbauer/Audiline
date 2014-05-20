@@ -31,13 +31,13 @@ public class Library extends JPanel{
 	 * Klassen Instanzen
 	 * ######################################
 	 */
-	private MusicTableModel mtm = new MusicTableModel();
+	private MusicTableModel mtm;
 	private LibraryBasics libraryBasics = new LibraryBasics();
 	
 	
 	public Library(){
-		guildGui();
 		libraryBasics.fillDatabase(FileSearch.chooseDirectory());
+		guildGui();
 	}
 
 
@@ -46,6 +46,9 @@ public class Library extends JPanel{
 	 */
 	private void guildGui() {
 		setLayout(new BorderLayout());
+		
+		//Darf erst später instanziert werden, da zuerst die Datenbank befüllt werden muss
+		mtm  = new MusicTableModel();
 		
 		//Das Muster der Tabelle wird definiert und die Datensätze werden hinzugefügt
 		musicTable = new JTable(mtm);
